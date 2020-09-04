@@ -18,7 +18,7 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.2.6.RELEASE</version>
 	</parent>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.7</maven.compiler.source>
@@ -102,6 +102,44 @@
 				<plugin>
 					<artifactId>maven-clean-plugin</artifactId>
 					<version>3.1.0</version>
+					<configuration status="WARN" monitorInterval="30">
+	<Properties>
+		<Property name="LOG_PATTERN">
+			%d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${hostName}
+			--- [%15.15t] %-40.40c{1.} : %m%n%ex
+		</Property>
+	</Properties>
+	<Appenders>
+		<Console name="ConsoleAppender" target="SYSTEM_OUT"
+			follow="true">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+		</Console>
+		<RollingFile name="FileAppender"
+			fileName="Logs/log4j2-example.Log"
+			filePattern="Logs/Log4j2-example-%d{yyy-MM-dd}-%i.log">
+			<PatternLayout>
+				<Pattern>
+					${LOG_PATTERN}
+				</Pattern>
+			</PatternLayout>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="10mb" />
+			</Policies>
+			<DefualtRolleroverStrategy max="10" />
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Logger name="com.exapmle.log4j2example" level="debug"
+			additivity="false">
+			<AppenderRef ref="ConsoleAppender" />
+		</Logger>
+		<Root level="info">
+
+			<AppenderRef ref="ConsoleAppender" />
+			<AppenderRef ref="FileAppender" />
+		</Root>
+	</Loggers>
+</configuration>
 				</plugin>
 				<!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
 				<plugin>

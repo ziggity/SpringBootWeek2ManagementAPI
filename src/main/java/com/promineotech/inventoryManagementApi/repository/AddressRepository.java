@@ -1,5 +1,9 @@
 package com.promineotech.inventoryManagementApi.repository;
 
-public interface AddressRepository {
+import org.springframework.data.repository.CrudRepository;
+
+import com.promineotech.inventoryManagementApi.entity.Address;
+
+public interface AddressRepository extends CrudRepository<Address, Long>{
 
 }
