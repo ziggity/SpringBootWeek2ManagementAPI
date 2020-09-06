@@ -2,8 +2,8 @@ package com.promineotech.inventoryManagementApi.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.promineotech.inventoryManagementApi.entity.Order;
+import com.promineotech.inventoryManagementApi.entity.Orders;
 
-public interface OrderRepository extends CrudRepository<Order, Long> {
+public interface OrderRepository extends CrudRepository<Orders, Long> {
 
 }

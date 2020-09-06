@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
-import com.promineotech.inventoryManagementApi.entity.Order;
+import com.promineotech.inventoryManagementApi.entity.Orders;
 import com.promineotech.inventoryManagementApi.service.OrderService;
 import com.promineotech.inventoryManagementApi.util.OrderStatus;
 
@@ -26,22 +26,22 @@ public class OrderController {
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Object> createCustomer(@RequestBody Set<Long> productIds, @PathVariable Long id){
 		try {
-			return new ResponseEntity<Object>(service.submitNewOrder(productIds, id), HttpStatus.CREATED);)
+			return new ResponseEntity<Object>(service.submitNewOrder(productIds, id), HttpStatus.CREATED);
 		} catch(Exception e) {
 			return new ResponseEntity<Object>(e, HttpStatus.BAD_REQUEST);
 		}
 	}
 	
 	@RequestMapping(value="/{orderId}", method=RequestMethod.PUT)
-	public ResponseEntity<Object> updateOrder(@RequestBody Order order, @PathVariable Long orderId){
+	public ResponseEntity<Object> updateOrder(@RequestBody Orders order, @PathVariable Long orderId){
 		try {
 			if(order.getStatus().equals(OrderStatus.CANCELED)) {
-				return new ResponseEntity<Object>(service.cancelOrder(orderId), HttpeStatus.OK);
+				return new ResponseEntity<Object>(service.cancelOrder(orderId), HttpStatus.OK);
 			} else if (order.getStatus().equals(OrderStatus.DELIVERED)) {
 				return new ResponseEntity<Object>(service.completeOrder(orderId), HttpStatus.OK);
 			}
 			return new ResponseEntity<Object>("Invalid update request", HttpStatus.BAD_REQUEST);
-		} catclh (Exception e) {
+		} catch (Exception e) {
 			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
 	}

@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.promineotech.inventoryManagementApi.entity.Customer;
@@ -44,7 +44,7 @@ public class CustomerController {
 			try {
 				return new ResponseEntity<Object>(service.updateCustomer(customer, id), HttpStatus.OK);
 			} catch (Exception e) {
-				return new ResponseEntity<Object>(e.getMessage(), HttpeStatus.NOT_FOUND);
+				return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
 			}
 		}
 		

@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.promineotech.inventoryManagementApi.util.OrderStatus;
 
 @Entity
-public class Order {
+public class Orders {
 	
 	private Long id;
 	private LocalDate ordered;
@@ -73,6 +73,9 @@ public class Order {
 
 	public void setProducts(Set<Product> products) {
 		this.products = products;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	@ManyToOne

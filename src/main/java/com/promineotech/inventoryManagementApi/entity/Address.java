@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javex.persistence.OneToOne;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -55,8 +55,11 @@ public class Address {
 			this.state = state;
 		}
 		
-		public String getZip(String zip) {
+		public void setZip(String zip) {
 			this.zip = zip;
+		}
+		public String getZip() {
+			return zip;
 		}
 		
 		@OneToOne(mappedBy = "address")

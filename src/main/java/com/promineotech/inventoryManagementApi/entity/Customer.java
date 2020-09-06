@@ -7,21 +7,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javex.persistence.OneToOne;
-import javex.persistence.OneToMany;
-import javex.persistence.JoinColumn;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.promineotech.inventoryManagementApi.util.MembershipLevel;
 
 @Entity
 public class Customer {
-	
+
 	private Long id;
 	private String firstName;
 	private String lastName;
-	private Address address;
+	private Address address; 
 	private MembershipLevel level;
-	private Set<Order> orders;
+	private Set<Orders> orders;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,21 +32,21 @@ public class Customer {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public String getFirstName() {
 		return firstName;
 	}
-	
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	
+
 	public String getLastName() {
 		return lastName;
 	}
-	
+
 	public void setLastName(String lastName) {
-		this.lastName = lastname;
+		this.lastName = lastName;
 	}
 	
 	@OneToOne(cascade = CascadeType.ALL)
@@ -54,26 +54,28 @@ public class Customer {
 	public Address getAddress() {
 		return address;
 	}
-	
+
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	
+
 	public MembershipLevel getLevel() {
 		return level;
 	}
-	
-	public setLevel(MembershipLevel level) {
+
+	public void setLevel(MembershipLevel level) {
 		this.level = level;
 	}
+
 	@OneToMany(mappedBy = "customer")
-	public Set<Order> getOrders(){
+	public Set<Orders> getOrders() {
 		return orders;
 	}
-	
-	public void setOrders(Set<Order> orders) {
+
+	public void setOrders(Set<Orders> orders) {
 		this.orders = orders;
 	}
 	
+	
+	
 }
-

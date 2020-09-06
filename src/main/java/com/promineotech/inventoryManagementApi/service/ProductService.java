@@ -1,6 +1,6 @@
 package com.promineotech.inventoryManagementApi.service;
 
-import org.apache.loggign.log4j.LogManager;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
